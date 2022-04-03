@@ -79,7 +79,15 @@ getRandomReacao = () => {
 
 client.on('message', (message) =>{
   if(message.author.username == process.env.TARGET){
+    
     const reacao = getRandomReacao()
+    let toLog = `
+      Message from ${message.author.username} - id: ${message.author.id}
+      Time sent: ${message.createdAt}
+      Message content: ${message.content}
+      Reacting with: ${reacao.join(' ')}
+    `
+    console.log(toLog)
     let cont = 0
     reacao.forEach((emoji) => {
       setTimeout(() => {
